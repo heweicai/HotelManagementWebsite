@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>关于我们</title>
+<style>
+*{margin:0px;padding:0px;border:0px;}
+body{font-size:16px;}
+#demo {
+overflow:hidden; height:100px; width:700px; position:absolute; top:100px; left:100px;
+}
+#demo1 {
+height:auto;
+text-align:left;
+color:red;
+}
+#demo2 {
+height:auto;
+text-align:left;
+color:red;
+}
+</style>
+</head>
+<body bgcolor="#ECF5FF">
+<div id="demo">
+    <div id="demo1" style="color:red;">
+        温馨堂大酒店位于长沙市开福区经济发展中心地带<br/>
+        温馨堂大酒店致力于超越期待，只为确保您能拥有最完美的住宿体验。<br/>
+        从引人瞩目的大行动到体贴入微的小细节，我们的员工全力以赴，<br/>
+        为您奉上最高标准的优质服务。我们超越期待，只为让您收获更多喜悦。</div>
+    <div id="demo2"></div>
+</div>
+<script language="javascript">
+	var demo=document.getElementById("demo");
+	var demo2=document.getElementById("demo2");
+	var demo1=document.getElementById("demo1");
+	demo2.innerHTML=demo1.innerHTML; // 为了在滚动条已滚动到最下端时，可以重新看到最开始的内容
+	function marquee() {
+	    // 滚动条已滚动到内容的最下端时，重新开始滚动
+		if(demo.scrollTop >= demo1.offsetHeight) {
+	  		demo.scrollTop = 0;
+		} else {
+	  		demo.scrollTop++; // 滚动条往下拉
+		}
+	}
+	var myMar = setInterval(marquee, 50); // 按照指定的周期(以毫秒计)来调用函数
+	demo.onmouseover = function() {
+	    clearInterval(myMar);
+	}
+	demo.onmouseout = function() {
+	    myMar=setInterval(marquee, 50);
+	}
+	function Get_back() {
+	window.location.href='/home';
+	}
+
+</script>
+
+<center><input  type="button"  value="返回" onclick="Get_back();"/></center>
+</body>
+</html>

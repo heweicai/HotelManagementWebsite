@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>管理系统</title>
+    <script language="javascript">
+    function init(){
+	var d=new Date();
+	var year=d.getFullYear();
+	var month=d.getMonth()+1;
+	var date=d.getDate();
+	var hour=d.getHours();
+	var minute=d.getMinutes();
+	var second=d.getSeconds();
+	document.getElementById("stime").innerText=year+"年"+month+"月"+date+"日"+hour+":"+minute+":"+second;
+	setTimeout("init();",1000);
+}
+</script>
+
+    <style>
+        html,body{font-family: Helvetica, Arial, sans-serif; height: 100%}
+        .main{width: 300px;margin-left: auto;margin-right: auto;padding: 30px;}
+        .content {height: 1800px; width: 100%; text-align: center;
+    </style>
+</head>
+<body  bgcolor="87CEFA" onload="init();">
+<marquee directio=left><font face=华文楷体 size=7 color="red">欢迎登录温馨堂大酒店管理系统，请谨慎操作！</font></marquee>
+<span id="stime" style="color:#FF3366; font-size:19px;"></span>
+
+<div class="container main" >
+    <br><br>
+    <br><br>
+    <form class="form-signin center" method="post" action="/login">
+        <h2><font color="blue" size="5">请登录:</font></h2>
+        <p><span>用户名：</span><input type="text" id="username"/></p>
+        <p><span>密&nbsp;&nbsp;&nbsp;码：</span><input type="password" id="password" /></p>
+        {% raw xsrf_form_html() %}
+        <p><input class="btn btn-lg btn-primary btn-block"  type="BUTTON" value="登录" id="login" /></p>
+    </form>
+
+    <script type="text/javascript" src="{{static_url("js/jquery.min.js")}}"></script>
+    <script type="text/javascript" src="{{static_url("js/script.js")}}"></script>
+</div>
+<br><br>
+<br><br>
+<div class="container main" >
+    {% set website = "<a href='http://www.starwoodhotels.com/sheraton/property/overview/index.html?propertyID=1705'><font face=黑体>温馨堂友情链接</font></a>" %}
+    {% raw website %}
+</div>
+
+ <div id="footer" ><font color="red" size="2.5"><strong><center>CopyRight@2017 版权所有： 温馨堂大酒店  |  技术支持:  何伟财工程师</center></strong></font></div>
+
+</body>
+
+</html>

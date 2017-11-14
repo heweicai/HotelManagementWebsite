@@ -1,0 +1,618 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>管理中心</title>
+</head>
+<body bgcolor="#ECF5FF" onload="init()">
+ <script language="javascript">
+	<!--function LinkMan(){-->
+	  <!--window.location.href = "user/linkman";-->
+	<!--}-->
+	<!--function HotelCulture(){-->
+	  <!--window.location.href = "/culture";-->
+	<!--}-->
+	<!--function AboutUs(){-->
+	  <!--window.location.href="user/us";-->
+	<!--}-->
+	<!--function Tools(){-->
+	  <!--window.location.href="user/tools";-->
+	<!--}-->
+	<!--function GetFirstPage() {-->
+	  <!--window.location.href='/home';-->
+	<!--}-->
+	function SysFirstPage(){
+	  window.location.href='/sysmanagement/home';
+	}
+	<!--function GetBack(){-->
+	<!--window.location.href='/sysmanagement/home?home';-->
+	<!--}-->
+	function init(){
+	var d=new Date();
+	var year=d.getFullYear();
+	var month=d.getMonth()+1;
+	var date=d.getDate();
+	var hour=d.getHours();
+	var minute=d.getMinutes();
+	var second=d.getSeconds();
+	document.getElementById("stime").innerText=year+"年"+month+"月"+date+"日"+hour+":"+minute+":"+second;
+	setTimeout("init();",1000);
+}
+    <!--function MyLodge(){-->
+      <!--window.location.href='/user/lodge';-->
+    <!--}-->
+</script>
+ <span id="stime" style="color:#FF3366; font-size:15px;"></span>
+ <center>
+ <!--<input type="button" value="温馨堂首页"  onclick="GetFirstPage();" />&nbsp;&nbsp;&nbsp;-->
+ <input type="button" value="首页"  onclick="SysFirstPage();" />&nbsp;&nbsp;&nbsp;
+ <!--<input type="button" value="密码修改"  onclick=";" />&nbsp;&nbsp;&nbsp;-->
+ <!--<input type="button" value="用户管理"  onclick=";" />&nbsp;&nbsp;&nbsp;-->
+ <!--<input type="button" value="酒店管理" onclick=";" />&nbsp;&nbsp;&nbsp;-->
+ <!--<input type="button" value="客房类型管理" onclick=";" />&nbsp;&nbsp;&nbsp;-->
+ <!--<input type="button" value="宾客信息管理" onclick=";" />&nbsp;&nbsp;&nbsp;-->
+ <!--<input type="button" value="客房管理" onclick=";" />&nbsp;&nbsp;&nbsp;-->
+ <!--<input type="button" value="入住管理" onclick=";" />&nbsp;&nbsp;&nbsp;-->
+ <!--<input type="button" value="财务管理" onclick=";" />&nbsp;&nbsp;&nbsp;-->
+ <!--<input type="button" value="智能分析" onclick="Tools();" />&nbsp;&nbsp;&nbsp;-->
+ <!--<input type="button" value="工具箱" onclick="Tools();" />&nbsp;&nbsp;&nbsp;-->
+ <!--<input type="button" value="返回" onclick="GetBack();" />&nbsp;&nbsp;&nbsp;-->
+ </center><br />
+<!--&lt;!&ndash;<hr noshade color="#0066cc">&ndash;&gt;   图片上方划横线-->
+ <div style="border:3px solid #FFB6C1";></div>
+ <script type="text/javascript"  src="{{static_url("js/echarts.js")}}"></script>
+ <div id="chartmain" style="width:1300px; height: 600px;"></div>
+ <script type="text/javascript">
+var option = {
+    backgroundColor: "#404A59",
+    color: ['#ffd285', '#ff733f', '#ec4863'],
+
+    title: [{
+        text: '温馨堂大酒店客流量',
+        left: '40%',
+        top: '6%',
+        textStyle: {
+            color: '#ffd285'
+        }
+    }],
+    tooltip: {
+        /*trigger: 'item',
+        formatter: "{a} <br/>{b} : {c}"
+        formatter: function(params) {
+            //return params.seriesType
+            //return params.name+':'+params.value
+        }*/
+    },
+    legend: {
+        x: '30%',
+        bottom: '1%',
+        textStyle: {
+            color: '#ffd285',
+        },
+        data: ['北京', '上海', '广州']
+    },
+    radar: {
+        // shape: 'circle',
+        indicator: [{
+            name: 'HUB主机',
+            max: 6500
+        }, {
+            name: '门口显示',
+            max: 16000
+        }, {
+            name: '显示器',
+            max: 30000
+        }, {
+            name: '投影仪',
+            max: 38000
+        }, {
+            name: '其他',
+            max: 52000
+        }],
+        center: ['83%', '85%'],
+        radius: 80
+    },
+    grid: {
+        left: '10%',
+        right: '35%',
+        top: '16%',
+        bottom: '6%',
+        containLabel: true
+    },
+    toolbox: {
+        "show": false,
+        feature: {
+            saveAsImage: {}
+        }
+    },
+    xAxis: {
+        type: 'category',
+        "axisLine": {
+            lineStyle: {
+                color: '#c0576d'
+            }
+        },
+        "axisTick": {
+            "show": false
+        },
+        axisLabel: {
+            textStyle: {
+                color: '#ffd285'
+            }
+        },
+        boundaryGap: true, //false时X轴从0开始
+        data: ['周日','周一', '周二', '周三', '周四', '周五', '周六']
+    },
+    yAxis: {
+        "axisLine": {
+            lineStyle: {
+                color: '#c0576d'
+            }
+        },
+        splitLine: {
+            show: true,
+            lineStyle: {
+                color: '#c0576d'
+            }
+        },
+        "axisTick": {
+            "show": false
+        },
+        axisLabel: {
+            textStyle: {
+                color: '#ffd285'
+            }
+        },
+        type: 'value'
+    },
+    series: [{
+            name: '餐饮',
+            smooth: true,
+            type: 'bar',
+            symbolSize: 8,
+            //symbol: 'circle',
+            data: [90, 50, 39, 50, 120, 82, 80]
+        }, {
+            name: '娱乐',
+            smooth: true,
+            type: 'bar',
+            symbolSize: 8,
+            //symbol: 'circle',
+            data: [70, 50, 50, 87, 90, 80, 70]
+        }, {
+            name: '客房',
+            smooth: true,
+            type: 'bar',
+            symbolSize: 8,
+            //symbol: 'circle',
+            data: [290, 200, 20, 132, 15, 200, 90]
+        }, {
+            type: 'pie',
+            center: ['83%', '20%'],
+            radius: ['15%', '20%'],
+            tooltip: {
+                trigger: 'item',
+                formatter: "{a} <br/>{b} : {c} ({d}%)"
+            },
+            label: {
+                normal: {
+                    position: 'center'
+                }
+            },
+            data: [{
+                value: 335,
+                name: '客人好评分析',
+                itemStyle: {
+                    normal: {
+                        color: '#ffd285'
+                    }
+                },
+                label: {
+                    normal: {
+                        formatter: '{d} %',
+                        textStyle: {
+                            color: '#ffd285',
+                            fontSize: 20
+
+                        }
+                    }
+                }
+            }, {
+                value: 180,
+                name: '占位',
+                tooltip: {
+                    show: false
+                },
+                itemStyle: {
+                    normal: {
+                        color: '#404A59'
+                    }
+                },
+                label: {
+                    normal: {
+                        textStyle: {
+                            color: '#ffd285',
+                        },
+                        formatter: '\n平均值'
+                    }
+                }
+            }]
+        }, {
+            type: 'pie',
+            center: ['83%', '50%'],
+            radius: ['15%', '20%'],
+            name: '饼图',
+            tooltip: {
+                trigger: 'item',
+                formatter: "{a} <br/>{b} : {c} ({d}%)"
+            },
+            /* label: {
+                     normal: {
+                         textStyle: {
+                             color: '#ffd285',
+                         },
+                         formatter: "{b}: {c} ({d}%)"
+                     }
+                 },*/
+            data: [{
+                value: 335,
+                name: '行政部',
+                itemStyle: {
+                    normal: {
+                        color: '#FF3300'
+                    }
+                }
+            }, {
+                value: 310,
+                name: '工程部',
+                itemStyle: {
+                    normal: {
+                        color: '#FFFF00'
+                    }
+                }
+            }, {
+                value: 234,
+                name: '治安部',
+                itemStyle: {
+                    normal: {
+                        color: '#00FF00'
+                    }
+                }
+            }, {
+                value: 135,
+                name: '餐饮部',
+                itemStyle: {
+                    normal: {
+                        color: '#1E90FF'
+                    }
+                }
+            }, {
+                value: 1548,
+                name: '客房部',
+                itemStyle: {
+                    normal: {
+                        color: '#ADFF2F'
+                    }
+                }
+            }]
+        },
+
+        {
+            type: 'radar',
+            center: ['83%', '85%'],
+            //radius: ['15%', '20%'],
+            //name: '雷达',
+            tooltip: {
+
+            },
+            data: [{
+                value: [4300, 10000, 28000, 35000, 50000, 19000],
+                name: '预算分配'
+            }, {
+                value: [5000, 14000, 28000, 31000, 42000, 21000],
+                name: '实际开销'
+            }]
+        }
+    ]
+};
+        //初始化echarts实例
+        var myChart = echarts.init(document.getElementById('chartmain'));
+
+        //使用制定的配置项和数据显示图表
+        myChart.setOption(option);
+    </script>
+
+
+ <p></p>
+
+ <div id="chartmain1" style="width:1300px; height: 600px;"></div>
+
+   <script type="text/javascript">
+   var option = {
+    backgroundColor: '#060f4c',
+    series: [{
+        type: 'pie',
+        radius: ['35%', '55%'],
+        silent: true,
+        data: [{
+            value: 1,
+            itemStyle: {
+                normal: {
+                    color: '#050f58',
+                    borderColor: '#162abb',
+                    borderWidth: 2,
+                    shadowBlur: 50,
+                    shadowColor: 'rgba(21,41,185,.75)'
+                }
+            }
+        }]
+    }, {
+        type: 'pie',
+        radius: ['35%', '55%'],
+        silent: true,
+        label: {
+            normal: {
+                show: false,
+            }
+        },
+        data: [{
+            value: 1,
+            itemStyle: {
+                normal: {
+                    color: '#050f58',
+                    shadowBlur: 50,
+                    shadowColor: 'rgba(21,41,185,.75)'
+                }
+            }
+        }]
+    }, {
+        name: '比例',
+        type: 'pie',
+        radius: ['39%', '52%'],
+        hoverAnimation: false,
+
+        data: [{
+            value: 50.41,
+            name: "男性",
+            itemStyle: {
+                normal: {
+                    label: {
+                        show: true,
+                        textStyle: {
+                            fontSize: 15,
+                            fontWeight: "bold"
+                        },
+                        position: "center"
+                    },
+                    color: new echarts.graphic.LinearGradient(0, 0, 0, 1, [{
+                        offset: 0,
+                        color: 'rgba(5,193,255,1)'
+                    }, {
+                        offset: 1,
+                        color: 'rgba(15,15,90,1)'
+                    }])
+                }
+            },
+            label: {
+                normal: {
+                    position: 'outside',
+                    textStyle: {
+                        color: '#fff',
+                        fontSize: 14
+                    },
+                    formatter: '{b}: 184\n\n{a}: {c}%'
+                }
+            },
+            labelLine: {
+                normal: {
+                    show: true,
+                    length: 20,
+                    length2: 30,
+                    smooth: false,
+                    lineStyle: {
+                        width: 1,
+                        color: "#2141b5"
+                    }
+                }
+            }
+        }, {
+            value: 49.59,
+            name: "女性",
+            itemStyle: {
+                normal: {
+                    label: {
+                        show: true,
+                        textStyle: {
+                            fontSize: 15,
+                            fontWeight: "bold"
+                        },
+                        position: "center"
+                    },
+                    color: new echarts.graphic.LinearGradient(0, 0, 0, 1, [{
+                        offset: 0,
+                        color: 'rgba(5,15,88,1)'
+                    }, {
+                        offset: 1,
+                        color: 'rgba(235,122,255,1)'
+                    }])
+                }
+            },
+            label: {
+                normal: {
+                    position: 'outside',
+                    textStyle: {
+                        color: '#fff',
+                        fontSize: 14
+                    },
+                    formatter: '{b}: 181\n\n{a}: {c}%'
+                }
+            },
+            labelLine: {
+                normal: {
+                    show: true,
+                    length: 20,
+                    length2: 40,
+                    smooth: false,
+                    lineStyle: {
+                        width: 1,
+                        color: "#2141b5"
+                    }
+                }
+            }
+        }]
+    }, {
+        name: '',
+        type: 'pie',
+        clockWise: true,
+        hoverAnimation: false,
+        radius: [200, 200],
+        label: {
+            normal: {
+                position: 'center'
+            }
+        },
+        data: [{
+            value: 0,
+            label: {
+                normal: {
+                    formatter: '47.67%',
+                    textStyle: {
+                        color: '#fe8b53',
+                        fontSize: 25,
+                        fontWeight: 'bold'
+                    }
+                }
+            }
+        }, {
+            tooltip: {
+                show: false
+            },
+            label: {
+                normal: {
+                    formatter: '\n大学生（含大专及以上）',
+                    textStyle: {
+                        color: '#bbeaf9',
+                        fontSize: 14
+                    }
+                }
+            }
+        }]
+    }]
+};
+
+        //初始化echarts实例
+        var myChart = echarts.init(document.getElementById('chartmain1'));
+
+        //使用制定的配置项和数据显示图表
+        myChart.setOption(option);
+
+</script>
+
+  <p></p>
+  <div id="chartmain2" style="width:1300px; height: 600px;text-align: right"></div>
+
+  <script type="text/javascript">
+
+var option = {
+    //title: {
+    //    text: '2000-2016年温馨堂总效益分析'
+    //},
+    title: [{
+        text: '2000-2016年温馨堂总效益',
+        left: '40%',
+        top: '5%',
+        textStyle: {
+           // color: '#ffd285'
+        }
+    }],
+    tooltip: {
+        trigger: 'axis'
+    },
+    toolbox: {
+        feature: {
+            dataView: {
+                show: true,
+                readOnly: false
+            },
+            restore: {
+                show: true
+            },
+            saveAsImage: {
+                show: true
+            }
+        }
+    },
+    grid: {
+        containLabel: true
+    },
+    legend: {
+        data: ['增速','销售额']
+    },
+    xAxis: [{
+        type: 'category',
+        axisTick: {
+            alignWithLabel: true
+        },
+        data: ['2000','2001','2002','2003','2004','2005','2006','2007','2008','2009','2010','2011','2012','2013','2014','2015','2016']
+    }],
+    yAxis: [{
+        type: 'value',
+        name: '增速',
+        min: 0,
+        max: 50,
+        position: 'right',
+        axisLabel: {
+            formatter: '{value} %'
+        }
+    }, {
+        type: 'value',
+        name: '销售额',
+        min: 0,
+        max: 3000,
+        position: 'left'
+    }],
+    series: [{
+        name: '增速',
+        type: 'line',
+        stack: '总量',
+            label: {
+                normal: {
+                    show: true,
+                    position: 'top',
+                }
+            },
+        lineStyle: {
+                normal: {
+                    width: 3,
+                    shadowColor: 'rgba(0,0,0,0.4)',
+                    shadowBlur: 10,
+                    shadowOffsetY: 10
+                }
+            },
+        data: [1,13,37,35,15,13,25,21,6,45,32,2,4,13,6,4,11]
+    }, {
+        name: '销售额',
+        type: 'bar',
+        yAxisIndex: 1,
+        stack: '总量',
+            label: {
+                normal: {
+                    show: true,
+                    position: 'top'
+                }
+            },
+        data: [209,236,325,439,507,576,722,879,938,1364,1806,1851,1931,2198,2349,2460,2735]
+    }]
+};
+        //初始化echarts实例
+        var myChart = echarts.init(document.getElementById('chartmain2'));
+
+        //使用制定的配置项和数据显示图表
+        myChart.setOption(option);
+
+</script>
+
+
+</body>
+</html>

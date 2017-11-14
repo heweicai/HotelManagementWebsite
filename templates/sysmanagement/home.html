@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>首页</title>
+</head>
+<body>
+ <script language="javascript">
+	<!--function LinkMan(){-->
+	  <!--window.location.href = "user/linkman";-->
+	<!--}-->
+	<!--function HotelCulture(){-->
+	  <!--window.location.href = "/culture";-->
+	<!--}-->
+	<!--function AboutUs(){-->
+	  <!--window.location.href="user/us";-->
+	<!--}-->
+	function InteligenceTools(){
+	  window.location.href='/user';
+	}
+	function Tools(){
+	  window.location.href='/user/tools';
+	}
+	function GetFirstPage() {
+	window.location.href='/home';
+	}
+	function GetBack(){
+	window.location.href='/index';
+	}
+	<!--function init(){-->
+	<!--var d=new Date();-->
+	<!--var year=d.getFullYear();-->
+	<!--var month=d.getMonth()+1;-->
+	<!--var date=d.getDate();-->
+	<!--var hour=d.getHours();-->
+	<!--var minute=d.getMinutes();-->
+	<!--var second=d.getSeconds();-->
+	<!--document.getElementById("stime").innerText=year+"年"+month+"月"+date+"日"+hour+":"+minute+":"+second;-->
+	<!--setTimeout("init();",1000);-->
+<!--}-->
+    <!--function MyLodge(){-->
+      <!--window.location.href='/user/lodge';-->
+    <!--}-->
+</script>
+<center>
+ <input type="submit" value="温馨堂首页"  onclick="GetFirstPage();" />&nbsp;&nbsp;&nbsp;
+ <input type="submit" value="密码修改"  onclick=";" />&nbsp;&nbsp;&nbsp;
+ <input type="submit" value="用户管理"  onclick=";" />&nbsp;&nbsp;&nbsp;
+ <input type="submit" value="酒店管理" onclick=";" />&nbsp;&nbsp;&nbsp;
+ <input type="submit" value="客房类型管理" onclick=";" />&nbsp;&nbsp;&nbsp;
+ <input type="submit" value="宾客信息管理" onclick=";" />&nbsp;&nbsp;&nbsp;
+ <input type="submit" value="客房管理" onclick=";" />&nbsp;&nbsp;&nbsp;
+ <input type="submit" value="入住管理" onclick=";" />&nbsp;&nbsp;&nbsp;
+ <input type="submit" value="财务管理" onclick=";" />&nbsp;&nbsp;&nbsp;
+ <input type="submit" value="智能分析" onclick="InteligenceTools();" />&nbsp;&nbsp;&nbsp;
+ <input type="submit" value="工具箱" onclick="Tools();" />&nbsp;&nbsp;&nbsp;
+ <input type="submit" value="退出" onclick="GetBack();" />&nbsp;&nbsp;&nbsp;
+ </center><br />
+
+ <div style="border:3px solid #FFB6C1";></div>
+</body>
+</html>

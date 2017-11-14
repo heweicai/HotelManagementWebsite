@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>我的住宿</title>
+    <script type="text/javascript">
+	function GetHelp() {
+	window.location.href='/user/userhelp';
+	}
+	function Get_back() {
+	window.location.href='/home';
+	}
+    </script>
+</head>
+<body bgcolor="#ECF5FF">
+<p>
+    <img src="{{ static_url("images/jiudian.jpg") }}" width="230" height="120" alt="" />
+    <a href="/home" style="text-decoration:none"><span style="float:right;font-weight:bold;">返回首页</span></a>
+</p>
+<span style="font-weight:bold;">
+<br />
+<!--<a href="/index" style="text-decoration:none">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;我的账户</a><br />-->
+<a >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;我的账户</a><br />
+<br />
+<a href="/user/reservation" style="text-decoration:none">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;水果超市</a><br />
+<br />
+<a href="/user/reservation" style="text-decoration:none">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;查找预定</a><br />
+<br/>
+<a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;我的预定</a><br />
+<br />
+<a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;我的积分活动</a><br />
+<br />
+<a href="/user/userhelp" style="text-decoration:none;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;帮助</a><br />
+<br/>
+</span>
+
+
+
+</center>
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<center><input  type="button"  value="返回" onclick="Get_back();"/></center>
+</body>
+</html>
